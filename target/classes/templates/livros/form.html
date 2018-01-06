@@ -1,26 +1,39 @@
 ﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
 <head>
-    <meta charset="UTF-8" />
-    <title>Insert title here</title>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
 </head>
 <body>
 
-    <form id="livroForm" th:action="@{/livros/(form)}" method="post" th:object="${livro}" action="#" enctype="multipart/form-data">
-        <input type="hidden" th:field="*{id}" />
-        <div>
-			<label for="capa" >Capa do livro</label> 
-			<input type="file" name="capaUrl" id="capaUrl" />
-			<span th:if="${message}" style="color: red;" th:text="${message}">Message Error</span>
+	<form id="livroForm" th:action="@{/livros/(form)}" method="post"
+		th:object="${livro}" action="#" enctype="multipart/form-data">
+		<input type="hidden" th:field="*{id}" />
+		<div>
+			<label for="capa">Capa do livro</label> <input type="file"
+				name="capaUrl" id="capaUrl" /> <span th:if="${message}"
+				style="color: red;" th:text="${message}">Message Error</span>
 		</div>
-        Título:<input type="text" th:field="*{nome}" />
-        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome Error</span><br />
-        Total de Páginas: <input type="text" th:field="*{quantidade}" />
-        <span th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}">Quantidade de pagina Error</span><br />
+		Título:<input type="text" th:field="*{nome}" /> <span
+			th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome
+			Error</span><br /> Total de Páginas: <input type="text"
+			th:field="*{quantidade}" /> <span
+			th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}">Quantidade
+			de pagina Error</span><br /> <label for="staticAutor"
+			class="col-sm-2 col-form-label">Autor</label>
 
-        <input type="submit" value="gravar" />
-    </form>
+		<div class="col-sm-10">
+			<select th:field="*{autor}">
+				<option th:each="autor : ${autores}" th:value="${autor.id}"
+					th:text="${autor.nome}">Nome do autor</option>
+			</select>
+		</div>
+
+
+		<input type="submit" value="gravar" />
+	</form>
 
 
 </body>
