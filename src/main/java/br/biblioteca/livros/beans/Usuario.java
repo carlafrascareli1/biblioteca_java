@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Usuario {
@@ -15,8 +17,12 @@ public class Usuario {
 	@GeneratedValue
 	private Long id;
 	
+	@NotNull(message = "Login é obrigatório.")
+	@Size(min = 3, max = 20, message = "Login deve ter entre 3 a 20 caracteres.")
 	private String username;
 	
+	@NotNull(message = "Senha é obrigatório.")
+	@Size(min = 6, max = 20, message = "Senha deve ter entre 6 a 20 caracteres.")
 	private String passsword;
 	
 	@OneToMany(mappedBy="usuario")
