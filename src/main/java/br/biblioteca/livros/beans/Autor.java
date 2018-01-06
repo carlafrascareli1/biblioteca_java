@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -19,6 +21,8 @@ public class Autor {
 	@GeneratedValue
 	private Long id;
 	
+	@NotNull(message = "Nome do autor é obrigatório.")
+	@Size(min = 2, max = 500, message = "Nome do autor deve ter entre 2 a 500 caracteres.")
 	private String nome;
 	
 	@OneToMany(mappedBy="autor")
