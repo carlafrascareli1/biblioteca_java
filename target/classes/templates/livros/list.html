@@ -10,6 +10,7 @@
 	<table>
 		<thead>
 			<tr>
+				<td></td>
 				<td>ID</td>
 				<td>Título</td>
 				<td></td>
@@ -22,6 +23,10 @@
 			</tr>
 
 			<tr th:each="livro : ${livros}">
+				<th scope="row">
+					<img th:if="${livro.capa}" th:src="@{'/' + ${livro.capa}}" width="100px" />
+					<img th:unless="${livro.capa}" th:src="@{'../img/unless.jpg'}" width="100px" />
+				</th>
 				<td th:text="${livro.id}">1</td>
 				<td>
 					<a href="#" th:href="@{'/livros/'+${livro.id}}" th:text="${livro.nome}"> Título </a>

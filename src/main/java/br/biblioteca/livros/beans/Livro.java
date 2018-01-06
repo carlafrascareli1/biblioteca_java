@@ -34,6 +34,17 @@ public class Livro {
 	
 	private String isbn;
 	
+	private String capa;
+
+	public String getCapa() {
+		return capa;
+	}
+
+	public void setCapa(String capa) {
+		this.capa = capa;
+	}
+
+	
 	@ManyToOne
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private Autor autor;
