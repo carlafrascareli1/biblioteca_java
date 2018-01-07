@@ -1,21 +1,38 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
-<head>
-    <meta charset="UTF-8" />
-    <title>Insert title here</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='Hello'"></head>
+<meta charset="UTF-8" />
 <body>
 
-    <form id="usuarioForm" th:action="@{/usuarios/(form)}" method="post" th:object="${usuario}" action="#">
-        <input type="hidden" th:field="*{id}" />
-        Login:<input type="text" th:field="*{username}" />
-        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Login Error</span><br />
-        Senha:<input type="password" th:field="*{passsword}" />
-        <span th:if="${#fields.hasErrors('passsword')}" th:errors="*{passsword}">Senha Error</span><br />
+	<div th:replace="layout :: navbar">(navbar)</div>
+	<div th:replace="Layout :: conteudo"></div>
 
-        <input type="submit" value="gravar" />
-    </form>
+	<form id="usuarioForm" th:action="@{/usuarios/(form)}" method="post"
+		th:object="${usuario}" action="#">
+		<div class="container">
+			<div class="page-header">
+				<h1>Cadastro de usuário</h1>
+			</div>
+
+			<div class="form-group">
+				<input type="hidden" th:field="*{id}" /> <label for="staticTitulo">Login</label>
+				<input type="text" th:field="*{username}" id="staticTitulo"
+					class="form-control" /> <span
+					th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Login
+					Error</span>
+			</div>
+			<div class="form-group">
+			<input type="hidden" th:field="*{id}" /> <label
+				for="staticpasssword">Senha</label>
+			
+				<input type="password" th:field="*{passsword}" id="staticpasssword"
+					class="form-control" placeholder="Password" /> <span
+					th:if="${#fields.hasErrors('passsword')}" th:errors="*{passsword}">Senha
+					Error</span><br />
+			</div>
+			<input type="submit" value="Salvar" class="btn btn-primary" />
+
+		</div>
+	</form>
 
 
 </body>
