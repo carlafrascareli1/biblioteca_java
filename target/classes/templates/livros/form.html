@@ -11,37 +11,43 @@
 		th:object="${livro}" action="#" enctype="multipart/form-data">
 		<input type="hidden" th:field="*{id}" />
 		<div class="container">
-			<div class="page-header">
-				<h1>Cadastro de livro</h1>
-			</div>
-			<div class="form-group">
-				<label for="capa">Capa do livro</label> <input type="file" class="form-control-file"
-					name="capaUrl" id="capaUrl" /> <span th:if="${message}"
-					style="color: red;" th:text="${message}">Message Error</span>
-			</div>
-			<div class="form-group">
-				<label for="staticTitulo">Título</label> <input type="text"
-					th:field="*{nome}" id="staticTitulo" class="form-control" /> <span
-					th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome
-					Error</span>
-			</div>
-			<div class="form-group">
-				<label for="staticPaginas"> Total de Páginas</label> <input
-					 type="number" id="staticPaginas" class="form-control"
-					th:field="*{quantidade}" /> <span
-					th:if="${#fields.hasErrors('quantidade')}"
-					th:errors="*{quantidade}">Quantidade de pagina Error</span>
-			</div>
-			<div class="form-group">
-			 <label for="staticAutor">Autor</label>
-				<select th:field="*{autor}" id="staticAutor" class="form-control form-control-lg">
-					<option th:each="autor : ${autores}" th:value="${autor.id}"
-						th:text="${autor.nome}">Nome do autor</option>
-				</select>
-			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Cadastro de livro</h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label for="capa">Capa do livro</label> <input type="file"
+							class="form-control-file" name="capaUrl" id="capaUrl" /> <span
+							th:if="${message}" style="color: red;" th:text="${message}">Message
+							Error</span>
+					</div>
+					<div class="form-group">
+						<label for="staticTitulo">Título</label> <input type="text"
+						 placeholder="Título do livro"
+							th:field="*{nome}" id="staticTitulo" class="form-control" /> <span
+							th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome
+							Error</span>
+					</div>
+					<div class="form-group">
+						<label for="staticPaginas"> Total de Páginas</label> <input
+							type="number" id="staticPaginas" class="form-control"
+							th:field="*{quantidade}" /> <span
+							th:if="${#fields.hasErrors('quantidade')}"
+							th:errors="*{quantidade}">Quantidade de pagina Error</span>
+					</div>
+					<div class="form-group">
+						<label for="staticAutor">Autor</label> <select th:field="*{autor}"
+							id="staticAutor" class="form-control form-control-lg">
+							<option th:each="autor : ${autores}" th:value="${autor.id}"
+								th:text="${autor.nome}">Nome do autor</option>
+						</select>
+					</div>
 
 
-			<input type="submit" value="Salvar" class="btn btn-primary" />
+					<input type="submit" value="Salvar" class="btn btn-primary" />
+				</div>
+			</div>
 		</div>
 	</form>
 

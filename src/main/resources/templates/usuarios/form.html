@@ -9,28 +9,29 @@
 	<form id="usuarioForm" th:action="@{/usuarios/(form)}" method="post"
 		th:object="${usuario}" action="#">
 		<div class="container">
-			<div class="page-header">
-				<h1>Cadastro de usuário</h1>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Cadastro de usuário</h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<input type="hidden" th:field="*{id}" /> <label
+							for="staticTitulo">Login</label> <input type="text" placeholder="Login"
+							th:field="*{username}" id="staticTitulo" class="form-control" />
+						<span th:if="${#fields.hasErrors('username')}"
+							th:errors="*{username}">Login Error</span>
+					</div>
+					<div class="form-group">
+						<input type="hidden" th:field="*{id}" /> <label
+							for="staticpasssword">Senha</label> <input type="password"
+							th:field="*{passsword}" id="staticpasssword" class="form-control"
+							placeholder="Senha" /> <span
+							th:if="${#fields.hasErrors('passsword')}"
+							th:errors="*{passsword}">Senha Error</span><br />
+					</div>
+					<input type="submit" value="Salvar" class="btn btn-primary" />
+				</div>
 			</div>
-
-			<div class="form-group">
-				<input type="hidden" th:field="*{id}" /> <label for="staticTitulo">Login</label>
-				<input type="text" th:field="*{username}" id="staticTitulo"
-					class="form-control" /> <span
-					th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Login
-					Error</span>
-			</div>
-			<div class="form-group">
-			<input type="hidden" th:field="*{id}" /> <label
-				for="staticpasssword">Senha</label>
-			
-				<input type="password" th:field="*{passsword}" id="staticpasssword"
-					class="form-control" placeholder="Password" /> <span
-					th:if="${#fields.hasErrors('passsword')}" th:errors="*{passsword}">Senha
-					Error</span><br />
-			</div>
-			<input type="submit" value="Salvar" class="btn btn-primary" />
-
 		</div>
 	</form>
 
