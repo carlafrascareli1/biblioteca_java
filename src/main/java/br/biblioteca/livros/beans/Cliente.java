@@ -1,13 +1,13 @@
 package br.biblioteca.livros.beans;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import java.util.*;
 
 @Entity(name="CAD_CLIENTE")
 public class Cliente {

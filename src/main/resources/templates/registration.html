@@ -1,0 +1,40 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='Hello'"></head>
+<meta charset="UTF-8" />
+<body>
+
+	<div th:replace="layout :: navbar">(navbar)</div>
+	<div th:replace="Layout :: conteudo"></div>
+
+	<form id="usuarioForm" th:action="@{/usuarios/registration/(form)}" method="post"
+		th:object="${usuarioForm}" action="#">
+		<div class="container">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Registrar usuário</h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<input type="hidden" th:field="*{id}" /> <label
+							for="staticTitulo">Login</label> <input type="text" placeholder="Login"
+							th:field="*{username}" id="staticTitulo" class="form-control" />
+						<span th:if="${#fields.hasErrors('username')}"
+							th:errors="*{username}">Login Error</span>
+					</div>
+					<div class="form-group">
+						<input type="hidden" th:field="*{id}" /> <label
+							for="staticpasssword">Senha</label> <input type="password"
+							th:field="*{passsword}" id="staticpasssword" class="form-control"
+							placeholder="Senha" /> <span
+							th:if="${#fields.hasErrors('passsword')}"
+							th:errors="*{passsword}">Senha Error</span><br />
+					</div>
+					<input type="submit" value="Entrar" class="btn btn-primary" />
+				</div>
+			</div>
+		</div>
+	</form>
+
+
+</body>
+</html>

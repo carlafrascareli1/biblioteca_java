@@ -1,8 +1,7 @@
 package br.biblioteca.livros.beans;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
+import java.util.*;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;

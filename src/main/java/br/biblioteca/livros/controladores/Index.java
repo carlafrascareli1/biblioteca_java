@@ -1,22 +1,30 @@
 package br.biblioteca.livros.controladores;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.biblioteca.livros.beans.Livro;
-import br.biblioteca.livros.repository.LivroRepository;
+import br.biblioteca.livros.beans.Usuario;
 
 @Controller
 public class Index {
 	
-	@Autowired
-	private LivroRepository livroRepository;
+	//@Autowired
+	//private LivroRepository livroRepository;
 
 	@GetMapping("/")
 	public ModelAndView home() {
 		return new ModelAndView("index");
+	}
+	
+	@GetMapping("/login")
+	public ModelAndView login() {
+		return new ModelAndView("login", "userForm", new Usuario());
+	}
+
+	@GetMapping(value = "/registration")
+	public ModelAndView registration() {
+		return new ModelAndView("registration", "usuarioForm", new Usuario());
 	}
 	
 	/*@GetMapping("/livros")
