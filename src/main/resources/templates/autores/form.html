@@ -1,19 +1,31 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
-<head>
-    <meta charset="UTF-8" />
-    <title>Insert title here</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead" th:with="title='Hello'"></head>
+<meta charset="UTF-8" />
 <body>
 
-    <form id="autorForm" th:action="@{/autores/(form)}" method="post" th:object="${autor}" action="#">
-        <input type="hidden" th:field="*{id}" />
-        Nome:<input type="text" th:field="*{nome}" />
-        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome Error</span><br />
+	<div th:replace="layout :: navbar">(navbar)</div>
+	<div th:replace="Layout :: conteudo"></div>
 
-        <input type="submit" value="gravar" />
-    </form>
+	<form id="autorForm" th:action="@{/autores/(form)}" method="post"
+		th:object="${autor}" action="#">
+		<input type="hidden" th:field="*{id}" />
+		<div class="container">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Cadastro de autor</h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label for="nome">Nome</label> <input type="text" id="nome" placeholder="Nome do autor"
+							class="form-control" th:field="*{nome}" /> <span
+							th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Nome
+							Error</span>
+					</div>
+					<input type="submit" value="Salvar" class="btn btn-primary" />
+				</div>
+			</div>
+		</div>
+	</form>
 
 
 </body>
