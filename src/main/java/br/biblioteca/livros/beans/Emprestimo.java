@@ -7,6 +7,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 public class Emprestimo {
 	
@@ -22,6 +25,18 @@ public class Emprestimo {
 	@ManyToOne
 	private Livro livro;
 	
+	@ManyToOne
+	@Cascade(CascadeType.SAVE_UPDATE)
+	private Cliente cliente;
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 	public Livro getLivro() {
 		return livro;
 	}

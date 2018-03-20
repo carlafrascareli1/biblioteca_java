@@ -29,6 +29,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/usuarios/list").hasRole("BASIC")
 				.and().formLogin()
 				.loginPage("/usuarios/login").permitAll().and().logout().permitAll();
+		
+		 http.headers().frameOptions().disable();
 	}
 
 	@Autowired
